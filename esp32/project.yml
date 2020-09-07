@@ -1,0 +1,24 @@
+# This file contains advanced configuration options for a Zerynth project
+# 
+# Under the section "config" a list of options can be specified and activated;
+# such options change the way Python and C modules are compiled.
+#
+# If you are using "ztc project" commands to compile, uplink, etc... please
+# fill the sections target and specs with the required information
+#
+
+target: null
+specs:
+    port: null
+    probe: null
+    disk: null
+vm:
+    uid: null
+    dev_uid: null
+    rtos: null
+    version: null
+    features: []
+config: {}
+
+
+
