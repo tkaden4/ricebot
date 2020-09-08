@@ -13,7 +13,11 @@ esp32wifi.auto_init()
 pinMode(LED0, OUTPUT)
 
 
-def onError(delay):
+def clean_value(value):
+    return (value - 4095/2) * 3.3/4095
+
+
+def on_error(delay):
     while True:
         digitalWrite(LED0, HIGH)
         sleep(delay)
@@ -26,17 +30,17 @@ for retry in range(10):
         wifi.link(wifi_config.SSID, wifi.WIFI_WPA2, wifi_config.PASSWORD)
         break
     except Exception as e:
-        onError(100)
+        on_error(100)
 
 if not wifi.is_linked():
-    onError(200)
+    on_error(200)
 else:
     digitalWrite(LED0, HIGH)
     while True:
         try:
             values = []
             for i in range(200):
-                values.append(adc.read(A3))
+                values.append(clean_value(adc.read(A3)))
             requests.post(wifi_config.HOST, json={
                 "min": min(values),
                 "max": max(values),
