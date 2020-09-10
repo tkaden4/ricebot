@@ -1,7 +1,7 @@
 import bodyParser from "body-parser";
 import { greenBright } from "chalk";
 import express from "express";
-import { appendFileSync, mkdirSync } from "fs";
+import { appendFileSync } from "fs";
 import morgan from "morgan";
 
 const PORT = 8080;
