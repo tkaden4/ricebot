@@ -25,6 +25,7 @@ client.on("ready", async () => {
 });
 
 app.post("/hook/status-change", async (req, res) => {
+  logger.info("status update");
   try {
     const status = rice.parseState(req.body.status);
     const statusChannel = client.channels.cache.find(
